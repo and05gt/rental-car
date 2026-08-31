@@ -1,5 +1,7 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
+body {
+  font-family: var(--font-manrope), sans-serif;
+  min-height: 100vh;
   margin: 0;
+  background-color: #F5F5F5;
+  color: #101828;
 }
