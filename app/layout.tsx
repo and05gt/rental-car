@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { Manrope } from 'next/font/google';
 import 'modern-normalize';
 import './globals.css';
+import Header from '@/components/Header/Header';
 
 export const metadata: Metadata = {
   title: 'RentalCar - Car Rental Company',
@@ -24,7 +25,10 @@ const manrope = Manrope({
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={manrope.variable}>{children}</body>
+      <body className={manrope.variable}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
