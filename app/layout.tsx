@@ -27,7 +27,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className={manrope.variable}>
         <Header />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

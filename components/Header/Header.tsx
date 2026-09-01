@@ -16,26 +16,38 @@ const Header = () => {
 
   return (
     <header className={css.header}>
-      <Link href="/" aria-label="Home">
-        <Image src={logo} alt="Logo" width={104} height={16} loading="eager" />
-      </Link>
-      <nav aria-label="Main Navigation">
-        <ul className={css.navigation}>
-          {navItems.map(({ href, label }) => {
-            const isActive = pathname === href;
-            return (
-              <li key={href} className={css.navigationItem}>
-                <Link
-                  href={href}
-                  className={isActive ? `${css.navigationLink} ${css.active}` : css.navigationLink}
-                  aria-current={isActive ? 'page' : undefined}>
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <div className={css.container}>
+        <Link href="/" aria-label="Home">
+          <Image
+            src={logo}
+            alt="Logo"
+            width={104}
+            height={16}
+            loading="eager"
+          />
+        </Link>
+        <nav aria-label="Main Navigation">
+          <ul className={css.navigation}>
+            {navItems.map(({ href, label }) => {
+              const isActive = pathname === href;
+              return (
+                <li key={href} className={css.navigationItem}>
+                  <Link
+                    href={href}
+                    className={
+                      isActive
+                        ? `${css.navigationLink} ${css.active}`
+                        : css.navigationLink
+                    }
+                    aria-current={isActive ? 'page' : undefined}>
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };
