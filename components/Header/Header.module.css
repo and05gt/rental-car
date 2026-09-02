@@ -1,6 +1,6 @@
 .header {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #F2F4F7;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--badges);
 }
 
 .container {
@@ -28,14 +28,14 @@
 }
 
 .navigationLink {
-  color: #101828;
+  color: var(--main);
   font-weight: 500;
   line-height: 20px;
   padding: 24px 0;
 }
 
 .navigationLink.active {
-  color: #00AAD4;
+  color: var(--light-blue);
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-skip-ink: none;
