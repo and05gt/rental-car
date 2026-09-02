@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import logo from '../../public/logo.webp';
 import css from './Header.module.css';
 
 const navItems = [
@@ -19,7 +18,7 @@ const Header = () => {
       <div className={css.container}>
         <Link href="/" aria-label="Home">
           <Image
-            src={logo}
+            src="/logo.webp"
             alt="Logo"
             width={104}
             height={16}

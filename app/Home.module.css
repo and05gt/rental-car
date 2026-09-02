@@ -1,7 +1,7 @@
-.sectionHome {
+.section {
   background-color: var(--light-gray);
   padding: 436px 0 60px;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(../public/banner.webp);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(/banner.webp);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

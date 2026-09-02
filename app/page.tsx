@@ -3,7 +3,7 @@ import css from './Home.module.css';
 
 export default function Home() {
   return (
-    <section className={css.sectionHome}>
+    <section className={css.section}>
       <div className={css.container}>
         <h1 className={css.title}>Find your perfect rental car</h1>
         <p className={css.description}>
