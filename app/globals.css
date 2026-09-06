@@ -8,6 +8,9 @@
   --gray: #8D929A;
   --light-blue: #00AAD4;
   --dark-blue: #0095BA;
+
+  --transition-bg-color: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-border-color: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -44,3 +47,20 @@ img {
 a {
   text-decoration: none;
 }
+
+button {
+  cursor: pointer;
+}
+
+/* .visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+} */

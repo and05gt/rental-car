@@ -39,12 +39,13 @@
   padding: 12px 88px;
   border-radius: 12px;
   background-color: var(--light-blue);
+  font-family: var(--font-manrope), sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   color: var(--white);
   border: none;
-  transition: background-color 0.2s ease;
+  transition: var(--transition-bg-color);
 }
 
 .catalogLink:hover {
