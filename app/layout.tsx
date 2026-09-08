@@ -4,6 +4,7 @@ import { Manrope } from 'next/font/google';
 import 'modern-normalize';
 import './globals.css';
 import Header from '@/components/Header/Header';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 
 export const metadata: Metadata = {
   title: 'RentalCar - Car Rental Company',
@@ -26,8 +27,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={manrope.variable}>
-        <Header />
-        <main>{children}</main>
+        <TanStackProvider>
+          <Header />
+          <main>{children}</main>
+        </TanStackProvider>
       </body>
     </html>
   );

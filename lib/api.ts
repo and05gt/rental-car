@@ -7,6 +7,7 @@ const api = axios.create({
 
 interface FetchCarsResponse {
   cars: Car[];
+  page: number;
   totalPages: number;
 }
 
