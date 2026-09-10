@@ -59,7 +59,7 @@ const CarItem = ({ car }: CarItemProps) => {
           </li>
         </ul>
       </div>
-      <Link className={css.readMoreBtn} href={`/catalog/${id}`}>
+      <Link className={css.readMoreBtn} href={`/catalog/${id}`} target="_blank">
         Read more
       </Link>
     </li>
