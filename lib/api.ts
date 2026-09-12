@@ -1,9 +1,18 @@
-import { BookingRequest, Car, Filters } from '@/types/car';
+import { BookingRequest, Car, CarsFilters } from '@/types/car';
 import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://car-rental-api.goit.study',
 });
+
+interface FetchCarsRequest {
+  brand?: string;
+  price?: number;
+  minMileage?: number;
+  maxMileage?: number;
+  page: number;
+  perPage: number;
+}
 
 interface FetchCarsResponse {
   cars: Car[];
@@ -15,18 +24,29 @@ interface BookingResponse {
   message: string;
 }
 
-export const fetchCars = async (page: number): Promise<FetchCarsResponse> => {
+export const fetchCars = async ({
+  brand = '',
+  price = 0,
+  minMileage = 0,
+  maxMileage = 0,
+  page = 1,
+  perPage = 12,
+}: FetchCarsRequest): Promise<FetchCarsResponse> => {
   const response = await api.get<FetchCarsResponse>('/cars', {
     params: {
+      brand: brand || undefined,
+      price: price || undefined,
+      minMileage: minMileage || undefined,
+      maxMileage: maxMileage || undefined,
       page,
-      perPage: 12,
+      perPage,
     },
   });
   return response.data;
 };
 
-export const getFilters = async (): Promise<Filters> => {
-  const response = await api.get<Filters>('/cars/filters');
+export const getFilters = async (): Promise<CarsFilters> => {
+  const response = await api.get<CarsFilters>('/cars/filters');
   return response.data;
 };
 

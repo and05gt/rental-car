@@ -81,7 +81,7 @@
   line-height: 20px;
   color: var(--white);
   border: none;
-  transition: var(--transition-bg-color);
+  transition: background-color var(--transition);
 }
 
 .readMoreBtn:hover {

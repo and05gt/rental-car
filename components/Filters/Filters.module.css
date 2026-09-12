@@ -76,6 +76,7 @@ input::placeholder {
   box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
   margin-top: 4px;
   overflow: hidden;
+  z-index: 99;
 }
 
 .dropdownWrapperBrand {
@@ -129,17 +130,30 @@ input::placeholder {
   color: var(--main);
 }
 
-.inputMileageFrom {
+.inputMinMileage {
   width: 160px;
   padding: 12px 24px;
   border-radius: 12px 0 0 12px;
-  border-right: 1px solid var(--light-gray)
+  border-right: 1px solid var(--light-gray);
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
-.inputMileageTo {
+.inputMaxMileage {
   width: 160px;
   padding: 12px 24px;
   border-radius: 0 12px 12px 0;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+.inputMinMileage::-webkit-outer-spin-button,
+.inputMinMileage::-webkit-inner-spin-button,
+.inputMaxMileage::-webkit-outer-spin-button,
+.inputMaxMileage::-webkit-inner-spin-button {
+  display: none;
 }
 
 .searchBtn {
@@ -155,7 +169,7 @@ input::placeholder {
   color: var(--white);
   border: none;
   display: block;
-  transition: var(--transition-bg-color);
+  transition: background-color var(--transition);
 }
 
 .searchBtn:hover {
@@ -173,4 +187,9 @@ input::placeholder {
   color: var(--gray);
   border: none;
   display: block;
+  transition: color var(--transition);
+}
+
+.clearBtn:hover {
+  color: var(--main);
 }

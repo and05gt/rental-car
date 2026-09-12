@@ -13,19 +13,42 @@
   align-items: center;
 }
 
+.carListContainer {
+  position: relative;
+  width: 100%;
+}
+
+.loaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(245, 245, 245, 0.89);
+  z-index: 1;
+}
+
+.message {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .button {
   padding: 12px 51px;
   border-radius: 12px;
   border: 1px solid var(--light-blue);
-  font-family: var(--font-manrope);
+  font-family: var(--font-manrope), sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
   color: var(--main);
-  transition: var(--transition-border-color);
+  transition: border-color var(--transition);
   margin-top: 48px;
 }
 
 .button:hover {
-  border: 1px solid var(--dark-blue);
+  border-color: var(--dark-blue);
 }

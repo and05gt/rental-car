@@ -23,7 +23,7 @@ export interface Car {
   updatedAt: string;
 }
 
-export interface Filters {
+export interface CarsFilters {
   brands: string[];
   price: {
     min: number;

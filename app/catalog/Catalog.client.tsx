@@ -1,25 +1,35 @@
 'use client';
 
-import Filters from '@/components/Filters/Filters';
 import CarList from '@/components/CarList/CarList';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { fetchCars } from '@/lib/api';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { fetchCars, getFilters } from '@/lib/api';
+import { useState } from 'react';
+import Filters from '@/components/Filters/Filters';
+import Loader from '@/components/Loader/Loader';
+import NoCarsFound from '@/components/NoCarsFound/NoCarsFound';
 import css from './CatalogPage.module.css';
 
 const CatalogClient = () => {
+  const [filters, setFilters] = useState({});
+
+  const { data: filtersData } = useQuery({
+    queryKey: ['carFilters'],
+    queryFn: getFilters,
+  });
+
   const {
     data,
     fetchNextPage,
-    isFetching,
     hasNextPage,
     isFetchingNextPage,
     isError,
     isLoading,
     isFetched,
+    error,
   } = useInfiniteQuery({
-    queryKey: ['cars'],
-    queryFn: ({ pageParam = 1 }) => {
-      return fetchCars(pageParam);
+    queryKey: ['cars', filters],
+    queryFn: ({ pageParam }) => {
+      return fetchCars({ page: pageParam, perPage: 12, ...filters });
     },
     initialPageParam: 1,
     getNextPageParam: lastResponse => {
@@ -41,22 +51,29 @@ const CatalogClient = () => {
   return (
     <section className={css.section}>
       <div className={css.container}>
-        <Filters />
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>Error</p>}
-        {showNoResults && <p>No cars found.</p>}
-        {hasCars && (
-          <>
-            <CarList cars={cars} />
-            {hasNextPage && (
-              <button
-                className={css.button}
-                type="button"
-                onClick={() => fetchNextPage()}>
-                Load more
-              </button>
-            )}
-          </>
+        <Filters filters={filtersData} setFilters={setFilters} />
+        <div className={css.carListContainer}>
+          {(isLoading || isFetchingNextPage) && (
+            <div className={css.loaderWrapper}>
+              <Loader />
+            </div>
+          )}
+          {isError && (
+            <p className={css.message}>
+              Could not load cars. {error instanceof Error ? error.message : ''}
+            </p>
+          )}
+          {showNoResults && <NoCarsFound resetFilters={() => setFilters({})} />}
+          {hasCars && <CarList cars={cars} />}
+        </div>
+        {hasNextPage && (
+          <button
+            className={css.button}
+            type="button"
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}>
+            {isFetchingNextPage ? 'Loading...' : 'Load more'}
+          </button>
         )}
       </div>
     </section>
