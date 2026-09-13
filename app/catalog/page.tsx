@@ -5,6 +5,22 @@ import {
 } from '@tanstack/react-query';
 import CatalogClient from './Catalog.client';
 import { fetchCars, getFilters } from '@/lib/api';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'RentalCar | Catalog - Browse Our Car Collection',
+  description:
+    'Explore our extensive catalog of rental cars. Find the perfect vehicle for your journey, with options to filter by brand, price, and mileage.',
+  openGraph: {
+    title: 'RentalCar | Catalog - Browse Our Car Collection',
+    description:
+      'Explore our extensive catalog of rental cars. Find the perfect vehicle for your journey, with options to filter by brand, price, and mileage.',
+    url: 'https://rental-car-xi-blue.vercel.app/catalog',
+    siteName: 'RentalCar',
+    locale: 'en-US',
+    type: 'website',
+  },
+};
 
 const CatalogPage = async () => {
   const queryClient = new QueryClient();

@@ -10,6 +10,15 @@ export const metadata: Metadata = {
   title: 'RentalCar - Car Rental Company',
   description:
     'Reliable and budget-friendly rentals for any journey. Easy online booking.',
+  openGraph: {
+    title: 'RentalCar - Car Rental Company',
+    description:
+      'Reliable and budget-friendly rentals for any journey. Easy online booking.',
+    url: 'https://rental-car-xi-blue.vercel.app/',
+    siteName: 'RentalCar',
+    locale: 'en-US',
+    type: 'website',
+  },
 };
 
 interface RootLayoutProps {

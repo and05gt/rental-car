@@ -5,9 +5,37 @@ import {
   QueryClient,
 } from '@tanstack/react-query';
 import CarDetailsClient from './CarDetails.client';
+import { Metadata } from 'next';
 
 interface CarDetailsProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: CarDetailsProps): Promise<Metadata> {
+  const { id } = await params;
+  const car = await fetchCarById(id);
+
+  return {
+    title: `RentalCar | ${car.brand} ${car.model}`,
+    description: car.description.slice(0, 30),
+    openGraph: {
+      title: `RentalCar | ${car.brand} ${car.model}`,
+      description: car.description.slice(0, 100),
+      url: `https://rental-car-xi-blue.vercel.app/catalog/${id}`,
+      siteName: 'RentalCar',
+      images: [
+        {
+          url: car.img,
+          width: 1200,
+          height: 630,
+          alt: `${car.brand} ${car.model}`,
+        },
+      ],
+      type: 'article',
+    },
+  };
 }
 
 const CarDetails = async ({ params }: CarDetailsProps) => {

@@ -1,4 +1,18 @@
+import { Metadata } from 'next';
 import css from './Home.module.css';
+
+export const metadata: Metadata = {
+  title: 'RentalCar | 404 - Page not found',
+  description: 'Sorry, the page you are looking for does not exist.',
+  openGraph: {
+    title: 'RentalCar | 404 - Page not found',
+    description: 'Sorry, the page you are looking for does not exist.',
+    url: 'https://rental-car-xi-blue.vercel.app/not-found',
+    siteName: 'RentalCar',
+    locale: 'en-US',
+    type: 'website',
+  },
+};
 
 const NotFound = () => {
   return (
