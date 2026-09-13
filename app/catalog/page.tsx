@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import {
   dehydrate,
   HydrationBoundary,
@@ -5,7 +6,6 @@ import {
 } from '@tanstack/react-query';
 import CatalogClient from './Catalog.client';
 import { fetchCars, getFilters } from '@/lib/api';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'RentalCar | Catalog - Browse Our Car Collection',
