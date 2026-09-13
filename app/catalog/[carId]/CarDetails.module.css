@@ -27,10 +27,19 @@
   background: var(--light-gray) -32.932px 0.004px / 119.906% 100% no-repeat;
 }
 
-.form {
-  width: 100%;
-  height: 424px;
-  padding: 32px;
-  border-radius: 16px;
-  background-color: var(--white);
+.loaderTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--main);
+  margin-bottom: 16px;
+}
+
+.loaderDescription {
+  max-width: 321px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  color: var(--main);
 }

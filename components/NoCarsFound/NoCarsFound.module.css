@@ -17,8 +17,8 @@
   margin-bottom: 16px;
 }
 
-.message {
-  width: 100%;
+.description {
+  max-width: 351px;
   font-weight: 500;
   line-height: 20px;
   text-align: center;

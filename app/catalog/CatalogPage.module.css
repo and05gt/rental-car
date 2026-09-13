@@ -18,19 +18,6 @@
   width: 100%;
 }
 
-.loaderWrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(245, 245, 245, 0.89);
-  z-index: 1;
-}
-
 .message {
   font-size: 20px;
   font-weight: 500;
@@ -51,4 +38,21 @@
 
 .button:hover {
   border-color: var(--dark-blue);
+}
+
+.loaderTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--main);
+  margin-bottom: 16px;
+}
+
+.loaderDescription {
+  max-width: 321px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  color: var(--main);
 }

@@ -16,7 +16,7 @@ const NoCarsFound = ({ resetFilters }: NoCarsFoundProps) => {
         height={388}
       />
       <h2 className={css.title}>No cars found</h2>
-      <p className={css.message}>
+      <p className={css.description}>
         We couldn`t find any cars that match your current filters. Try changing
         your search criteria or reset the filters.
       </p>

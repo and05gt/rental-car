@@ -1,14 +1,17 @@
+import { ReactNode } from 'react';
 import css from './Loader.module.css';
 
-const Loader = () => {
-  return (
-    <div className={css.spinner}>
-      <span className={css.loader} aria-label="Loading" />
-      <p className={css.loadingText}>Loading cars...</p>
+interface LoaderProps {
+  children: ReactNode;
+}
 
-      <p className={css.description}>
-        Please wait while we fetch the best cars for you
-      </p>
+const Loader = ({ children }: LoaderProps) => {
+  return (
+    <div className={css.loaderWrapper}>
+      <div className={css.spinner}>
+        <span className={css.loader} aria-label="Loading" />
+        {children}
+      </div>
     </div>
   );
 };

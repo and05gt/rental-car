@@ -5,6 +5,9 @@ import { useParams } from 'next/navigation';
 import { fetchCarById } from '@/lib/api';
 import Image from 'next/image';
 import CarInfo from '@/components/CarInfo/CarInfo';
+import BookingForm from '@/components/BookingForm/BookingForm';
+import Loader from '@/components/Loader/Loader';
+import { Toaster } from 'react-hot-toast';
 import css from './CarDetails.module.css';
 
 const CarDetailsClient = () => {
@@ -20,7 +23,15 @@ const CarDetailsClient = () => {
     refetchOnMount: false,
   });
 
-  if (isLoading) return <p>Loading, please wait...</p>;
+  if (isLoading)
+    return (
+      <Loader>
+        <h2 className={css.loaderTitle}>Loading car...</h2>
+        <p className={css.loaderDescription}>
+          Please wait while we fetch the car details for you
+        </p>
+      </Loader>
+    );
 
   if (error || !car) return <p>Something went wrong.</p>;
 
@@ -37,9 +48,10 @@ const CarDetailsClient = () => {
               loading="eager"
             />
           </div>
-          <div className={css.form}></div>
+          <BookingForm carId={car.id} />
         </div>
         <CarInfo car={car} />
+        <Toaster position="top-center" />
       </div>
     </section>
   );

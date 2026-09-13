@@ -54,9 +54,12 @@ const CatalogClient = () => {
         <Filters filters={filtersData} setFilters={setFilters} />
         <div className={css.carListContainer}>
           {(isLoading || isFetchingNextPage) && (
-            <div className={css.loaderWrapper}>
-              <Loader />
-            </div>
+            <Loader>
+              <h2 className={css.loaderTitle}>Loading cars...</h2>
+              <p className={css.loaderDescription}>
+                Please wait while we fetch the best cars for you
+              </p>
+            </Loader>
           )}
           {isError && (
             <p className={css.message}>

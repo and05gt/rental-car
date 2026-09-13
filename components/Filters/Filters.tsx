@@ -2,8 +2,8 @@
 
 import { ChangeEvent, useState } from 'react';
 import { CarsFilters } from '@/types/car';
-import css from './Filters.module.css';
 import { buildPriceOptions } from '@/utils/buildPriceOptions';
+import css from './Filters.module.css';
 
 interface SetFilters {
   brand?: string;
@@ -80,13 +80,13 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
             {brandIsOpen ? (
               <span className={css.icon}>
                 <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-up"></use>
+                  <use href="/icons.svg#icon-chevron-up" />
                 </svg>
               </span>
             ) : (
               <span className={css.icon}>
                 <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-down"></use>
+                  <use href="/icons.svg#icon-chevron-down" />
                 </svg>
               </span>
             )}
@@ -132,13 +132,13 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
             {priceIsOpen ? (
               <span className={css.icon}>
                 <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-up"></use>
+                  <use href="/icons.svg#icon-chevron-up" />
                 </svg>
               </span>
             ) : (
               <span className={css.icon}>
                 <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-down"></use>
+                  <use href="/icons.svg#icon-chevron-down" />
                 </svg>
               </span>
             )}

@@ -1,6 +1,6 @@
 import { Car } from '@/types/car';
-import css from './CarList.module.css';
 import CarItem from '../CarItem/CarItem';
+import css from './CarList.module.css';
 
 interface CarListProps {
   cars: Car[];

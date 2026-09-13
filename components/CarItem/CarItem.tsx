@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import css from './CarItem.module.css';
 import { Car } from '@/types/car';
+import css from './CarItem.module.css';
 
 interface CarItemProps {
   car: Car;
