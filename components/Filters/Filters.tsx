@@ -31,7 +31,7 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
     const maxMileage = formData.get('maxMileage') as string;
     setFilters({
       brand: brand ? brand : undefined,
-      price: price ? Number(price) : undefined,
+      price: price ? Number(price.slice(4)) : undefined,
       minMileage: minMileage ? Number(minMileage) : undefined,
       maxMileage: maxMileage ? Number(maxMileage) : undefined,
     });
@@ -120,7 +120,7 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
               type="text"
               name="price"
               id="price"
-              value={price}
+              value={price ? `To $${price}` : ''}
               placeholder="Choose a price"
               readOnly
               onClick={() => {
