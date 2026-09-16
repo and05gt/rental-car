@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FocusEvent, useState } from 'react';
 import { CarsFilters } from '@/types/car';
 import { buildPriceOptions } from '@/utils/buildPriceOptions';
 import css from './Filters.module.css';
@@ -53,6 +53,13 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
     setMaxMileage(e.target.value);
   };
 
+  const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setBrandIsOpen(false);
+      setPriceIsOpen(false);
+    }
+  };
+
   const priceOptions = buildPriceOptions(filters?.price);
 
   return (
@@ -62,7 +69,10 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
           <label htmlFor="brand" className={css.label}>
             Car brand
           </label>
-          <div className={css.dropdownInputWrap}>
+          <div
+            className={css.dropdownInputWrap}
+            tabIndex={-1}
+            onBlur={handleBlur}>
             <input
               className={`${css.input} ${css.dropdownInputBrand}`}
               type="text"
@@ -77,19 +87,13 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
               }}
               aria-label="Choose a brand"
             />
-            {brandIsOpen ? (
-              <span className={css.icon}>
-                <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-up" />
-                </svg>
-              </span>
-            ) : (
-              <span className={css.icon}>
-                <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-down" />
-                </svg>
-              </span>
-            )}
+            <span className={css.icon}>
+              <svg width={16} height={16}>
+                <use
+                  href={`/icons.svg#icon-chevron-${brandIsOpen ? 'up' : 'down'}`}
+                />
+              </svg>
+            </span>
           </div>
           {brandIsOpen && (
             <div
@@ -98,7 +102,11 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
                 {filters?.brands.map((item, idx) => (
                   <li
                     key={idx}
+                    tabIndex={0}
                     className={`${item === brand ? css.dropdownItemSelected : css.dropdownItem}`}
+                    onMouseDown={e => {
+                      e.preventDefault();
+                    }}
                     onClick={() => {
                       setBrand(item);
                       setBrandIsOpen(false);
@@ -114,7 +122,10 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
           <label htmlFor="price" className={css.label}>
             Price/ 1 hour
           </label>
-          <div className={css.dropdownInputWrap}>
+          <div
+            className={css.dropdownInputWrap}
+            tabIndex={-1}
+            onBlur={handleBlur}>
             <input
               className={`${css.input} ${css.dropdownInputPrice}`}
               type="text"
@@ -129,19 +140,13 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
               }}
               aria-label="Choose a price"
             />
-            {priceIsOpen ? (
-              <span className={css.icon}>
-                <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-up" />
-                </svg>
-              </span>
-            ) : (
-              <span className={css.icon}>
-                <svg width={16} height={16}>
-                  <use href="/icons.svg#icon-chevron-down" />
-                </svg>
-              </span>
-            )}
+            <span className={css.icon}>
+              <svg width={16} height={16}>
+                <use
+                  href={`/icons.svg#icon-chevron-${priceIsOpen ? 'up' : 'down'}`}
+                />
+              </svg>
+            </span>
           </div>
           {priceIsOpen && (
             <div
@@ -153,7 +158,11 @@ const Filters = ({ filters, setFilters }: FiltersProps) => {
                   return (
                     <li
                       key={idx}
+                      tabIndex={0}
                       className={`${itemValue === price ? css.dropdownItemSelected : css.dropdownItem}`}
+                      onMouseDown={e => {
+                        e.preventDefault();
+                      }}
                       onClick={() => {
                         setPrice(itemValue);
                         setPriceIsOpen(false);
